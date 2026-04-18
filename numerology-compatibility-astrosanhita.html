@@ -1,0 +1,668 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulSync: Advanced Numerology Compatibility</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --accent-hover: #d35400;
+            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --card-bg: #ffffff;
+            --text-dark: #333333;
+            --text-light: #7f8c8d;
+            --gold: #d4af37;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Input Section */
+        .input-group {
+            margin-bottom: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .input-group:focus-within {
+            transform: scale(1.02);
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: var(--transition);
+            background: #fff;
+            text-align: center;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(230, 126, 34, 0.2);
+        }
+
+        .btn-calculate {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-calculate:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn-calculate::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-calculate:hover::after {
+            left: 100%;
+        }
+
+        /* Loading Animation */
+        .loader-container {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .circles {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .circles div {
+            width: 15px;
+            height: 15px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin: 0 10px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .circles div:nth-child(1) { animation-delay: -0.32s; }
+        .circles div:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .results-section.active {
+            display: block;
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        .score-card {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 4px solid var(--gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            box-shadow: 0 0 0 10px rgba(212, 175, 55, 0.1);
+            position: relative;
+        }
+
+        .score-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .compatibility-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        /* Report Grid */
+        .report-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .partner-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-top: 5px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .partner-card.love { border-color: #e74c3c; }
+        .partner-card.marriage { border-color: #3498db; }
+
+        .partner-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .partner-name-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* Detailed Predictions */
+        .prediction-box {
+            background: #f9f9f9;
+            border-left: 3px solid var(--accent);
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .prediction-box h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .tag-love { background: rgba(231, 76, 60, 0.1); color: #c0392b; }
+        .tag-marriage { background: rgba(52, 152, 219, 0.1); color: #2980b9; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+        }
+
+        /* Footer */
+        .app-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .footer-brand {
+            color: var(--primary);
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-credit {
+            display: block;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <div style="font-size: 3rem; color: var(--accent); margin-bottom: 10px;">✦</div>
+            <h1 style="font-size: 2.5rem;">SoulSync</h1>
+            <p style="color: var(--text-light); font-style: italic;">Unlock the cosmic blueprint of your relationship</p>
+        </div>
+
+        <!-- Input Form -->
+        <div id="inputSection" class="input-group reveal active">
+            <label style="display: block; text-align: left; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: var(--primary);">Your Full Name</label>
+            <input type="text" id="name1" placeholder="e.g. Alex Morgan">
+            
+            <label style="display: block; text-align: left; margin-top: 20px; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: var(--primary);">Partner's Full Name</label>
+            <input type="text" id="name2" placeholder="e.g. Sarah Connor">
+            
+            <label style="display: block; text-align: left; margin-top: 20px; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: var(--primary);">Date of Birth (First Partner)</label>
+            <input type="date" id="dob1">
+            
+            <label style="display: block; text-align: left; margin-top: 20px; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: var(--primary);">Date of Birth (Partner)</label>
+            <input type="date" id="dob2">
+
+            <button class="btn-calculate" onclick="calculateCompatibility()">Reveal Destiny</button>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingSection" class="loader-container">
+            <div class="circles">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <h3 style="color: var(--primary);">Consulting the Numerological Chart...</h3>
+        </div>
+
+        <!-- Results -->
+        <div id="resultsSection" class="results-section">
+            <h2 class="compatibility-title reveal">Cosmic Compatibility Report</h2>
+
+            <div class="score-card reveal">
+                <div class="score-circle">
+                    <span class="score-number" id="finalScore">0%</span>
+                    <span class="score-label">Connection Score</span>
+                </div>
+                <p style="margin-top: 20px; color: var(--text-light);" id="scoreText">Calculating vibrations...</p>
+            </div>
+
+            <div class="report-grid">
+                <!-- Partner 1 Card -->
+                <div class="partner-card love reveal">
+                    <span class="tag tag-love">The Anchor</span>
+                    <div class="partner-name-label">You</div>
+                    <div class="partner-number" id="p1NameNum">0</div>
+                    <div class="prediction-box">
+                        <h4>❤️ Primary Vibe</h4>
+                        <p id="p1VibeText">Vibrations are stabilizing.</p>
+                        <h4>💍 Marriage Potential</h4>
+                        <p id="p1MarriageText">Foundation building.</p>
+                    </div>
+                </div>
+
+                <!-- Partner 2 Card -->
+                <div class="partner-card marriage reveal">
+                    <span class="tag tag-marriage">The Catalyst</span>
+                    <div class="partner-name-label">Partner</div>
+                    <div class="partner-number" id="p2NameNum">0</div>
+                    <div class="prediction-box">
+                        <h4>❤️ Primary Vibe</h4>
+                        <p id="p2VibeText">Vibrations are exciting.</p>
+                        <h4>💍 Marriage Potential</h4>
+                        <p id="p2MarriageText">Dynamic energy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overall Prediction -->
+            <div class="prediction-box reveal" style="background: #fff; margin-top: 30px; border-left-color: var(--primary);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Relationship Verdict</h3>
+                <p id="overallPrediction" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                    Analyzing the interplay of numbers...
+                </p>
+            </div>
+
+            <!-- Footer -->
+            <div class="app-footer reveal">
+                <span class="footer-brand">AstroSanhita.Com</span>
+                <span class="footer-credit">made with love by Sankar Bhattacharjee</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Core Numerology Logic ---
+
+        // Helper: Get full date from input
+        function parseDate(inputId) {
+            const dateVal = document.getElementById(inputId).value;
+            if (!dateVal) return null;
+            return new Date(dateVal);
+        }
+
+        // Helper: Calculate Life Path Number
+        // Reduces sum to single digit or Master Number (11, 22, 33)
+        function getLifePath(dateString) {
+            const date = new Date(dateString);
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            let sum = 0;
+            sum += day;
+            sum += month;
+            sum += year;
+
+            // Reduce to single digit repeatedly, but stop at 11, 22, 33
+            while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
+                sum = String(sum).split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            }
+            return sum;
+        }
+
+        // Helper: Calculate Name Number (Pythagorean Chaldean style simplified for compatibility)
+        // A=1, B=2, C=3, D=4, E=5, F=6, G=7, H=8, I=9, J=1, K=2, L=3, M=4, N=5, O=6, P=7, Q=8, R=9, S=1, T=2, U=3, V=4, W=5, X=6, Y=7, Z=8
+        function getNameNumber(name) {
+            const letters = "abcdefghijklmnopqrstuvwxyz".split('');
+            let sum = 0;
+            let totalValue = 0;
+            
+            // Convert to lowercase for consistency
+            const cleanName = name.toLowerCase().replace(/[^a-z]/g, ''); 
+            
+            for (let char of cleanName) {
+                totalValue += letters.indexOf(char) + 1;
+            }
+
+            // Reduce total value
+            let reduced = totalValue;
+            while (reduced > 36) {
+                reduced = String(reduced).split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            }
+            return reduced;
+        }
+
+        // --- The "Human" Predictions Engine ---
+        
+        const predictions = {
+            love: {
+                1: { p: "You are a bold initiator. You drive the relationship forward with confidence.", m: "Marriage requires you to learn the value of compromise rather than always leading." },
+                2: { p: "You bring deep emotional intuition. You feel the air in the room and sense your partner's unspoken needs.", m: "Excellent for marriage as you are the peacemaker who harmonizes different energies." },
+                3: { p: "You bring joy, creativity, and conversation. The spark is often bright and visible.", m: "Marriage works if you channel this creativity into home life and avoid gossip or superficiality." },
+                4: { p: "You provide reliability. Your partner feels safe knowing you have their back and you keep your promises.", m: "A strong foundation for marriage, though you must be careful not to become too rigid." },
+                5: { p: "You bring excitement, adventure, and freedom. You never bore your partner with routine.", m: "Marriage requires patience. You both must learn that commitment doesn't mean giving up the thrill." },
+                6: { p: "You radiate warmth and care. You are the nurturing force that heals wounds in the relationship.", m: "You are a natural caretaker. However, ensure you aren't trying to 'fix' your partner into a mold." },
+                7: { p: "You offer depth, intelligence, and mystery. Your partner is always engaged in your mind.", m: "Intimate marriage if you value privacy. However, don't let silence become coldness or detachment." },
+                8: { p: "You bring ambition and power. Your partner is drawn to your strength and success.", m: "Powerful marriage if you balance material success with emotional availability." },
+                9: { p: "You are compassionate and generous. Your partner feels deeply understood and supported by your spirit.", m: "Highly compatible for a humanitarian marriage, but you must manage the tendency to let go of the relationship." },
+                11: { p: "You are an intuitive visionary. You inspire your partner to see new possibilities.", m: "Marriage works best if you can share your spiritual insights without overwhelming your grounded partner." },
+                22: { p: "You are a 'Master Builder'. Your partner admires your ability to turn dreams into tangible reality.", m: "High potential for a legacy-building marriage, though communication must be direct to avoid misunderstanding." },
+                33: { p: "You represent supreme altruism and love. Your partner feels spiritually elevated just by your presence.", m: "A rare, soul-level connection. Marriage is a spiritual journey for both of you." }
+            },
+            marriage: {
+                // Marriage focuses on stability, longevity, and shared values
+                1: { p: "Independent spirits who respect each other's need for autonomy.", m: "Challenge: Ego clashes. Success: You are both leaders who respect each other's throne." },
+                2: { p: "A harmonious partnership built on mutual support.", m: "High Success: Natural balance. You complement each other's strengths and weaknesses." },
+                3: { p: "A relationship filled with laughter and artistic expression.", m: "Challenge: Lightheartedness can clash with domestic routine. Success: Make home a gallery of shared happiness." },
+                4: { p: "Solid, practical, and hardworking union.", m: "High Success: You build a fortress of security together. Very stable." },
+                5: { p: "A dynamic relationship full of travel and shared experiences.", m: "Challenge: You may grow apart if you travel too much physically. Success: Travel together or share mental adventures." },
+                6: { p: "A domestic paradise filled with care and home life.", m: "High Success: You are destined for a long, nurturing, traditional marriage." },
+                7: { p: "An intellectual and philosophical bond.", m: "Success: A marriage that values privacy and depth over showiness." },
+                8: { p: "A power couple focused on shared goals.", m: "High Success: Building wealth and status together is the primary driver." },
+                9: { p: "A humanitarian partnership focused on the greater good.", m: "Success: You grow spiritually, but must work hard to ground yourselves in daily reality." }
+            }
+        };
+
+        // --- Main Calculation Function ---
+
+        function calculateCompatibility() {
+            // 1. Get Inputs
+            const name1 = document.getElementById('name1').value;
+            const name2 = document.getElementById('name2').value;
+            const dob1 = parseDate('dob1');
+            const dob2 = parseDate('dob2');
+
+            // Validation
+            if (!name1 || !name2 || !dob1 || !dob2) {
+                alert("Please fill in all fields to reveal your cosmic match.");
+                return;
+            }
+
+            // 2. Calculate Numbers
+            const lp1 = getLifePath(dob1);
+            const lp2 = getLifePath(dob2);
+            const nn1 = getNameNumber(name1);
+            const nn2 = getNameNumber(name2);
+
+            // 3. Generate Score
+            // Logic: Base score on Life Path difference + Name resonance
+            let score = 0;
+            
+            // Difference logic (circular 1-9)
+            const diff = Math.abs(lp1 - lp2);
+            if (diff === 0) score = 75 + Math.random() * 15; // Same path = high but potentially same frequency
+            else if (diff === 4 || diff === 5 || diff === 1) score = 60 + Math.random() * 30; // Compatible
+            else if (diff === 2 || diff === 7) score = 85 + Math.random() * 10; // Opposites attract/Complementary
+            else score = 40 + Math.random() * 40; // Harder path
+
+            // Name Resonance Bonus
+            if (nn1 % 9 === nn2 % 9) score += 15; // Same core name vibration
+
+            // Cap at 100
+            score = Math.min(100, Math.max(15, score));
+            score = Math.round(score); // Round
+
+            // 4. Update UI
+            document.getElementById('inputSection').style.display = 'none';
+            document.getElementById('loadingSection').style.display = 'block';
+
+            // Fake processing delay for effect
+            setTimeout(() => {
+                document.getElementById('loadingSection').style.display = 'none';
+                const results = document.getElementById('resultsSection');
+                results.classList.add('active');
+                runAnimationResults(score, lp1, lp2, nn1, nn2);
+            }, 1500);
+        }
+
+        function runAnimationResults(score, lp1, lp2, nn1, nn2) {
+            const resultBox = document.getElementById('resultsSection');
+            
+            // Sequence of reveals
+            const elements = resultBox.querySelectorAll('.reveal');
+
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                    
+                    if (index === 0) {
+                        // Score Animation
+                        const scoreEl = document.getElementById('finalScore');
+                        let current = 0;
+                        const interval = setInterval(() => {
+                            current += 1;
+                            scoreEl.innerText = current + "%";
+                            if (current >= score) clearInterval(interval);
+                        }, 30);
+                    }
+                }, index * 200);
+            });
+
+            // Populate Text
+            populateText(lp1, lp2, nn1, nn2, score);
+        }
+
+        function populateText(lp1, lp2, nn1, nn2, score) {
+            const p1Data = { num: nn1, love: lp1, marr: lp1 };
+            const p2Data = { num: nn2, love: lp2, marr: lp2 };
+
+            // Determine Text based on Score
+            let verdict = "";
+            let scoreText = "";
+
+            if (score > 85) {
+                verdict = `This is a rare alignment of energies. With a compatibility score of ${score}%, you share a cosmic rhythm that feels almost predestined. Your Life Paths (1 & ${lp2}) suggest you are walking a parallel journey that naturally intersects with depth and understanding. You likely communicate effortlessly. The marriage potential is exceptionally high, provided you respect each other's individual growth. This isn't just a match of convenience; it feels like a match of destiny. Be careful not to rely too heavily on this natural harmony and neglect the hard work of maintenance.`;
+                scoreText = "Destiny Aligned";
+            } else if (score > 60) {
+                verdict = `A solid connection with a ${score}% compatibility score. You bring different strengths to the table, creating a balance. While you may not agree on everything immediately, your core vibrations (1 & ${lp2}) create a magnetic pull. The potential for a long-term relationship is strong, especially in the early stages. You will likely learn a lot from each other, growing together through shared experiences.`;
+                scoreText = "Promising Union";
+            } else {
+                verdict = `A challenging path with a ${score}% compatibility score. The universe is asking you to put in significant work. While the initial attraction may be there, your core numbers (1 & ${lp2}) suggest conflicting values or life goals. This can actually be a growth opportunity if you both are willing to meet in the middle. You are not meant to be together for the short term, but rather to learn from the friction.`;
+                scoreText = "Growth Journey";
+            }
+
+            // Map Specific Predictions
+            // We use the Life Path number for the broad "Vibe" and Name Number for specific "Name" vibes if available, 
+            // but for this simplified engine, we stick to Life Path for consistency.
+            
+            // Partner 1
+            const p1LoveText = predictions.love[lp1].p;
+            const p1MarrText = predictions.marriage[lp1].m;
+
+            // Partner 2
+            const p2LoveText = predictions.love[lp2].p;
+            const p2MarrText = predictions.marriage[lp2].m;
+
+            // Overall prediction combines the verdict with specific insights
+            const fullVerdict = verdict + `<br><br><strong>Specific Insight:</strong> <br>Your combined vibration creates a ${score > 70 ? "harmonious" : "dynamic"} energy. Pay attention to how you react when numbers 1 and ${lp2} come up in conversation.`;
+
+            // Update DOM
+            document.getElementById('p1NameNum').innerText = nn1;
+            document.getElementById('p1VibeText').innerText = p1LoveText;
+            document.getElementById('p1MarriageText').innerText = p1MarrText;
+
+            document.getElementById('p2NameNum').innerText = nn2;
+            document.getElementById('p2VibeText').innerText = p2LoveText;
+            document.getElementById('p2MarriageText').innerText = p2MarrText;
+
+            document.getElementById('overallPrediction').innerHTML = fullVerdict;
+        }
+
+        // Trigger animations on scroll if needed, but for this app, onload is sufficient
+        window.onload = () => {
+            // Initial layout set
+            const inputs = document.querySelectorAll('.reveal.active');
+            inputs.forEach(el => el.classList.add('active'));
+        };
+
+    </script>
+</body>
+</html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
